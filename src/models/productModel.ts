@@ -25,6 +25,15 @@ const productSchema = new mongoose.Schema({
     timestamps: true
 });
 
+productSchema.index({
+    title: 'text',
+});
+
 const Product = mongoose.model("Product", productSchema);
+
+//创建索引
+Product.createIndexes({
+    title: 'text',
+})
 
 export default Product;
