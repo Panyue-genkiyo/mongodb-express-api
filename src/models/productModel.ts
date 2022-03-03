@@ -29,11 +29,25 @@ productSchema.index({
     title: 'text',
 });
 
+//在查找之前不让他显示createdAt和updatedAt和_id和__v字段
+productSchema.pre(/^find/, function(next) {
+    this.select({
+        __v: false,
+        createdAt: false,
+        updatedAt: false,
+        _id: false,
+    });
+    next();
+});
+
 const Product = mongoose.model("Product", productSchema);
 
 //创建索引
 Product.createIndexes({
     title: 'text',
 })
+
+
+
 
 export default Product;
