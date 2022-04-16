@@ -18,12 +18,13 @@ const productController = {
             console.log(result);
             const products = result[0].status === "fulfilled" ? result[0].value : [];
             const count = result[1].status === 'fulfilled' ? result[1].value : 0;
+
             return res.status(200).json({
                 status: 'success',
-                data: {
+                data:{
                     products,
                     count
-                }
+                },
             })
         } catch (err) {
             return res.status(500).json({
@@ -68,6 +69,7 @@ const productController = {
                 data: newProduct
             });
         } catch (err) {
+            console.log(err);
             return res.status(500).json({
                 message: err.message
             })
