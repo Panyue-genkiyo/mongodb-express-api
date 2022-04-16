@@ -35,7 +35,7 @@ productSchema.pre(/^find/, function(next) {
         __v: false,
         createdAt: false,
         updatedAt: false,
-        _id: false,
+        // _id: false,
     });
     next();
 });
